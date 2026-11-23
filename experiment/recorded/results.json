@@ -1,0 +1,95 @@
+{
+  "schema": "compiler-field-survey/v1",
+  "host": "Windows 10.0.26300",
+  "machine": "AMD64",
+  "python": "3.12.10",
+  "shared_target": "AnyCPU .NET Framework executable; one Windows host and the same mscorlib.dll",
+  "source_sha256": "1cc37c93413250a81633a200e3626b0618a1c17d3ae8f0ce1b6353994cdb4f16",
+  "mscorlib_sha256": "94715f6991e2b9dc7481532c05aa99e74a5fff4ee147be541bca27f99e003fc7",
+  "compilers": {
+    "framework": {
+      "compiler_version": "14.8.10001.0",
+      "driver_sha256": "eca02e6b15cde93009a59a3d129d5a77fb5008f2e1cf62cf573b6737c747ecc3"
+    },
+    "roslyn": {
+      "compiler_version": "4.14.0-3.25412.6",
+      "driver_sha256": "1aff8f10e6bc0d7a8f2dffa9b56f3fd625aa930a68d0e080e4e586c05044e31c"
+    }
+  },
+  "rows": [
+    {
+      "compiler": "framework",
+      "optimization": "off",
+      "variant": "unsigned",
+      "inputs": 256,
+      "oracle_mismatches": 0,
+      "first_mismatch": null,
+      "last_mismatch": null
+    },
+    {
+      "compiler": "framework",
+      "optimization": "off",
+      "variant": "signed-control",
+      "inputs": 256,
+      "oracle_mismatches": 128,
+      "first_mismatch": 128,
+      "last_mismatch": 255
+    },
+    {
+      "compiler": "framework",
+      "optimization": "on",
+      "variant": "unsigned",
+      "inputs": 256,
+      "oracle_mismatches": 0,
+      "first_mismatch": null,
+      "last_mismatch": null
+    },
+    {
+      "compiler": "framework",
+      "optimization": "on",
+      "variant": "signed-control",
+      "inputs": 256,
+      "oracle_mismatches": 128,
+      "first_mismatch": 128,
+      "last_mismatch": 255
+    },
+    {
+      "compiler": "roslyn",
+      "optimization": "off",
+      "variant": "unsigned",
+      "inputs": 256,
+      "oracle_mismatches": 0,
+      "first_mismatch": null,
+      "last_mismatch": null
+    },
+    {
+      "compiler": "roslyn",
+      "optimization": "off",
+      "variant": "signed-control",
+      "inputs": 256,
+      "oracle_mismatches": 128,
+      "first_mismatch": 128,
+      "last_mismatch": 255
+    },
+    {
+      "compiler": "roslyn",
+      "optimization": "on",
+      "variant": "unsigned",
+      "inputs": 256,
+      "oracle_mismatches": 0,
+      "first_mismatch": null,
+      "last_mismatch": null
+    },
+    {
+      "compiler": "roslyn",
+      "optimization": "on",
+      "variant": "signed-control",
+      "inputs": 256,
+      "oracle_mismatches": 128,
+      "first_mismatch": 128,
+      "last_mismatch": 255
+    }
+  ],
+  "within_variant_outputs_identical": true,
+  "observations_sha256": "a03aca45ffb3143d6b571f025434f63f5e417585dae907771d042338e2771827"
+}

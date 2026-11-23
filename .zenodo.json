@@ -1,0 +1,12 @@
+{
+  "title": "Compilers, Codecs and Language Toolchains: What Agreement Between Builds Can Establish",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "version": "v0.1.0",
+  "creators": [{"name": "Weis, Aaron Michael", "orcid": "0009-0002-1906-148X", "affiliation": "Oneiron Holdings LLC"}],
+  "license": "cc-by-4.0",
+  "language": "eng",
+  "access_right": "open",
+  "keywords": ["compilers", "software testing", "test oracles", "software portability", "lossless compression", "sensor-event replay"],
+  "description": "<p>Two builds can agree even when neither returns the specified result. This research preprint by Aaron Michael Weis presents a source-linked catalogue of 73 compilers, toolchain entries, formats and codecs. In an exhaustive experiment on one Windows host, two C# compilers at two optimization settings agree on all 256 byte inputs, including a deliberately signed variant that returns the wrong value on 128 inputs. A proposed application to the Omega Game Sphere AR engine separates software event replay from possible physical measurements at the Colorado Quantum Incubator. No facility measurements or partnership are claimed.</p><p><a href=\"https://github.com/OneiroNexus/compiler-toolchain-survey/blob/v0.1.0/compiler-toolchain-survey.pdf\">Read the versioned PDF</a>. The deposited archive includes the identical PDF, paper text, catalogue, example code, raw observations and component licenses.</p>"
+}
