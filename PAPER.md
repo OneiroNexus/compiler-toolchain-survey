@@ -1,11 +1,12 @@
 # Compilers, Codecs and Language Toolchains: What Agreement Between Builds Can Establish
 
 Aaron Michael Weis · Oneiron Holdings LLC · [ORCID 0009-0002-1906-148X](https://orcid.org/0009-0002-1906-148X)
-Research preprint · v0.1.0 · 23 November 2026
+Research preprint · [v0.1.1](https://github.com/OneiroNexus/compiler-toolchain-survey/releases/tag/v0.1.1) · 23 November 2026
+[All editions on Zenodo](https://doi.org/10.5281/zenodo.24476697)
 
 ## Abstract
 
-Two builds of a program return the same answer. What has been checked? This paper develops that question from a purposive catalogue of 73 compilers, build tools, formats and codecs. The catalogue separates a change in how a program is translated from a change in how its data are stored. Its 43 compiler and toolchain entries show why the language front end, generated target and execution host matter when judging agreement. A worked example tests the high four bits of every possible byte against a reference derived from the specification. All four builds of the unsigned program matched the specification on all 256 inputs. All four deliberately signed controls agreed with one another while returning wrong values for the same 128 inputs. A final proposal applies the distinction to sensor-event replay for an augmented-reality game engine. The software example and the proposed physical measurements answer different questions.
+Two builds of a program return the same answer. What has been checked? This paper develops that question from a purposive catalogue of 73 compilers, build tools, formats and codecs. The catalogue separates a change in how a program is translated from a change in how its data are stored. Its 43 compiler and toolchain entries show why the language front end, generated target and execution host matter when judging agreement. A worked example tests the high four bits of every possible byte against a reference derived from the specification. All four builds of the unsigned program matched the specification on all 256 inputs. All four deliberately signed controls agreed with one another while returning wrong values for the same 128 inputs. The closing proposal invites the Colorado Quantum Incubator to help design a timing trial for the Omega Game Sphere, where the order in which sensor messages arrive can change which player gets a virtual object.
 
 **Keywords:** compilers; differential testing; test oracles; software portability; lossless compression; sensor-event replay.
 
@@ -69,21 +70,21 @@ A proof-oriented language introduces another boundary. A property proved about a
 | Unsigned input | 4 | 256 | 0 | 0 / 256 |
 | Signed reinterpretation | 4 | 256 | 0 | 128 / 256 |
 
-**Result.** At 127, both variants returned 7 in every build. At 128 the unsigned variant returned 8 and the signed variant returned -8; at 255 the two values were 15 and -1. All 128 errors in each signed build fell in the upper half of the domain. Comparing compiler outputs alone would have passed the control in all four configurations. The independent specification rejected it in all four. [Read the 256 input rows](https://github.com/OneiroNexus/compiler-toolchain-survey/blob/v0.1.0/experiment/recorded/observations.csv) or [rerun the example](https://github.com/OneiroNexus/compiler-toolchain-survey/blob/v0.1.0/experiment/README.md).
+**Result.** At 127, both variants returned 7 in every build. At 128 the unsigned variant returned 8 and the signed variant returned -8; at 255 the two values were 15 and -1. All 128 errors in each signed build fell in the upper half of the domain. Comparing compiler outputs alone would have passed the control in all four configurations. The independent specification rejected it in all four. [Read the 256 input rows](https://github.com/OneiroNexus/compiler-toolchain-survey/blob/v0.1.1/experiment/recorded/observations.csv) or [rerun the example](https://github.com/OneiroNexus/compiler-toolchain-survey/blob/v0.1.1/experiment/README.md).
 
 An exhaustive check here covers exactly one finite input domain under the recorded execution environment. It neither samples a distribution of production inputs nor estimates a general compiler failure rate. The negative control is an error in the test program's interpretation of the byte. It is not a compiler defect. A smaller or faster executable would not alter that conclusion.
 
 
 
-## 5. A proposed use in the Omega Game Sphere
+## 5. An invitation to COQI
 
-In an augmented-reality game, two sensor events can be captured in one order and arrive at the engine in another. Aaron Michael Weis's public Omega Game Sphere brief identifies this as a proposed timing problem for the OneiroNexus game engine [10]. The compiler question has a narrow, practical place here: before interpreting a reversal as a sensor effect, check whether two software builds order the same input differently.
+Two players reach for the same virtual object in the proposed Omega Game Sphere. One player's sensor captures the touch first, but its message reaches the game engine second. Which player gets the object? The question gives the timing problem in the OneiroNexus game-engine brief [10] a consequence both players can see.
 
-A first experiment needs only synthetic observations. Specify an event identifier, integer capture time and integer arrival time in a single named unit. Choose the tie rule before running the builds. For example, a toy trace might contain event A captured at 100 and arriving at 108, and event B captured at 103 and arriving at 106. Capture order is A then B; arrival order is B then A. Compare each build's output with the prescribed order and with the other build. Repeat with equal capture times, late arrivals and a declared boundary case. Those numbers define an illustrative fixture, not measurements from a game or a facility.
+Start with a trace anyone can replay. In this synthetic example, all times are milliseconds from an arbitrary start. Touch A is captured at 100 and arrives at 108. Touch B is captured at 103 and arrives at 106. A wins under a first-touch rule. B wins if the engine simply takes the first message it receives. Specify the rule and how to handle a tie, then check each software build against it. Repeat with equal capture times and a late arrival.
 
-Only a second, separately agreed experiment needs a physical testbed. The Colorado Quantum Incubator (COQI) describes its Quantum Timing Testbed as an open-access facility for evaluating timing technology [11]. Weis proposes it as a possible site for comparing sensor timestamps with an independent reference. If access, equipment and the test plan are agreed, record capture-time error against that reference and capture-to-arrival latency separately. Then replay the recorded events through the same builds. This would help distinguish a disagreement that already exists in software from one that appears only with measured inputs.
+I invite the Colorado Quantum Incubator (COQI) timing team to help design the first physical trial of this scenario at its open-access Quantum Timing Testbed in Boulder [11]. OneiroNexus could bring the game scenario, a synthetic trace and two builds prepared to replay it. COQI researchers could help choose the reference clock and the interval worth testing. Together we could measure how closely each sensor timestamps the touch and how long its message takes to reach the engine.
 
-The author proposes COQI as the test site. The work reported in this paper used no COQI equipment, participants or sensor records. It establishes no partnership, endorsement, site approval or measured sensor performance.
+What is the smallest gap between two touches that lets us confidently call one first? A first working session could turn that question into a one-page test plan. The game team could use the results to design a fair tie rule. COQI could use the same replay to show visitors and developers exactly when better timing changes an outcome they can see.
 
 ## 6. What to report next time
 
@@ -113,11 +114,11 @@ Publish the input definition, the output that matters, the reference that could 
 
 [10] Weis, A. M. (2026). [Sensor timing for the Omega Game Sphere AR engine, v0.1.0](https://doi.org/10.5281/zenodo.24357940). Separately archived proposal.
 
-[11] Colorado Quantum Incubator. [Open-access Quantum Timing Testbed](https://quantumincubator.org/quantum-testbed/). Facility description; no participation in the present study is asserted.
+[11] Colorado Quantum Incubator. [Open-access Quantum Timing Testbed](https://quantumincubator.org/quantum-testbed/). COQI describes the Boulder facility and the timing applications it was built to evaluate.
 
 **Contributions and interests.** Aaron Michael Weis assembled the research collection, framed the portability questions and proposed the game-engine application. He is affiliated with Oneiron Holdings LLC, which develops the project discussed in section 5. Claude assisted the original source collection and drafting. Codex prepared this edition, implemented the worked example and checked its outputs. The named tools and cited prior work belong to their respective authors.
 
-**Availability and reuse.** The versioned repository includes this paper, the complete source-linked catalogue and the worked example. The paper and original catalogue descriptions are CC BY 4.0 International. The original example code is MIT licensed. Cited projects and other third-party materials retain their own terms. [Edition and citation links](https://github.com/OneiroNexus/compiler-toolchain-survey/releases/tag/v0.1.0).
+**Availability and reuse.** The versioned repository includes this paper, the complete source-linked catalogue and the worked example. The paper and original catalogue descriptions are CC BY 4.0 International. The original example code is MIT licensed. Cited projects and other third-party materials retain their own terms. [Edition and citation links](https://github.com/OneiroNexus/compiler-toolchain-survey/releases/tag/v0.1.1).
 
 ## Appendix. The source-linked catalogue
 

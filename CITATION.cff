@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "Please cite the version DOI for this research preprint."
 type: generic
 title: "Compilers, Codecs and Language Toolchains: What Agreement Between Builds Can Establish"
-version: "v0.1.0"
+version: "v0.1.1"
 date-released: "2026-11-23"
 authors:
   - family-names: "Weis"
